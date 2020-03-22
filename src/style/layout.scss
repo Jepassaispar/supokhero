@@ -1,0 +1,122 @@
+//////////////////// IMPORT
+@font-face {
+    font-family: pokemon_GB;
+    src: url("./pokemon-gb-font/PokemonGb-RAeo.ttf");
+}
+
+/////////////////// COLOR
+//CLASSES COLOR
+.black {
+    color: black !important;
+}
+
+.white {
+    color: white;
+}
+
+//VARIABLES COLOR
+$deepGreen: #1A8000;
+$mediumGreen: #28CC00;
+$lightGreen: #33FF00;
+$red : red;
+$blue: blue;
+$orange: orange;
+
+///////////////////
+
+//VARIABLES
+$mainNav: 50px;
+$small: .8rem;
+$medium: 1rem;
+$big: 1.4rem;
+
+//LAYOUT
+*,
+*:focus {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+body {
+    margin-top: $mainNav;
+}
+
+///////////////// FONTS
+///////// FONT-FAMILY
+.pokemonGB {
+    font-family: pokemon_GB;
+}
+
+//////// FONT-SIZE
+.pokemonFontSize {
+    font-size: 8px;
+}
+
+.mainContainer {
+    height: 100vh;
+}
+
+// .image {
+//     width: 50%;
+// }
+
+.scrollable {
+    overflow-y: scroll;
+}
+
+// SIZES
+.smallFont {
+    font-size: $small;
+}
+
+.mediumFont {
+    font-size: $medium;
+}
+
+.bigFont {
+    font-size: $big;
+}
+
+//FLEX
+.flex {
+    display: flex;
+}
+
+//GRID
+.grid {
+    display: grid;
+}
+
+//BUTTON
+.button {
+    padding: 10px 40px;
+    font-size: $medium;
+
+    &:hover {
+        cursor: pointer;
+        color: red;
+    }
+}
+
+//ANIMATION
+.transit {
+    transition: 0.5s ease-in-out;
+}
+
+.rotationRight {
+    transform: rotate(180deg);
+}
+
+.rotationLeft {
+    transform: rotate(-180deg);
+}
+
+.translationLeft {
+    transform: translateX(-100%);
+}
+
+.translationRight {
+    transform: translateX(100%);
+}

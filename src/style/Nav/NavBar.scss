@@ -1,0 +1,67 @@
+@import "../layout.scss";
+
+$linkSize: 50px;
+
+#mainNav {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+
+    #burgerIconContainer {
+        position: absolute;
+        left: 19px;
+        top: 18px;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        #burgerIcon {
+            display: flex;
+            height: 16px;
+            width: 16px;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .mainContainer {
+        z-index: 1;
+        position: sticky;
+        background: black;
+        height: $mainNav;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50px 50px auto 400px;
+
+        .link,
+        .linkContainer {
+            color: white;
+            text-decoration: none;
+            align-self: center;
+
+            &:hover {
+                color: $red;
+                cursor: pointer;
+            }
+        }
+
+        .linkContainer {
+            grid-column: 4/5;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        #homeLink {
+            grid-column: 2/3;
+        }
+
+        .active {
+            color: $deepGreen;
+        }
+    }
+}
