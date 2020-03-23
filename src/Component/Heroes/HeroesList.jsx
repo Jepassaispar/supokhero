@@ -2,10 +2,9 @@ import React from "react";
 import getRandomInt from "../../utils/math/getRandomInt";
 
 const HeroesList = ({ heroes, displayHero, hero }) => {
-
-  function randomHero() {
+  const randomHero = () => {
     return displayHero(heroes[getRandomInt(heroes.length - 1)]);
-  }
+  };
 
   return (
     <div className="listContainer">

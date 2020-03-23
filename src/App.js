@@ -9,26 +9,25 @@ import "./style/layout.scss";
 import "./style/listAndCardContainer.scss";
 import APIPoke from "./api/APIPoke";
 import APIHero from "./api/APIHero";
+import filterPokemons from "./utils/objectTransform/filterPokemons";
 
 function App() {
   const pokeURL = "http://pokeapi.co/api/v2";
   const HeroAPI = new APIHero(`${process.env.REACT_APP_BACKEND_URL}/heroes`);
-  const pokeAPI = new APIPoke(pokeURL);
+  const pokeAPI = new APIPoke(`${process.env.REACT_APP_BACKEND_URL}/pokemons`);
   const [pokemons, setPokemons] = useState([]);
   const [heroes, setHeroes] = useState([]);
 
   const getHeroes = () => {
     HeroAPI.getAllHeroes()
       .then(apiRes => setHeroes(apiRes.data))
-      .catch(apiErr => console.log(apiErr));
+      .catch(apiErr => console.error(apiErr));
   };
 
   const getPokemons = () => {
     pokeAPI
       .getAllPoke()
-      .then(apiRes => {
-        setPokemons(apiRes.data.results);
-      })
+      .then(apiRes => setPokemons(apiRes.data))
       .catch(apiErr => console.error(apiErr));
   };
 
@@ -45,20 +44,13 @@ function App() {
         <Route
           path="/supokhero"
           render={props => (
-            <Supokhero
-              {...props}
-              allPokemons={pokemons}
-              pokeURL={pokeURL}
-              allHeroes={heroes}
-            />
+            <Supokhero {...props} allPokemons={pokemons} allHeroes={heroes} />
           )}
         ></Route>
         <Route
           exact
           path="/pokemons"
-          render={props => (
-            <Pokemons {...props} allPokemons={pokemons} pokeURL={pokeURL} />
-          )}
+          render={props => <Pokemons {...props} allPokemons={pokemons} />}
         ></Route>
         <Route
           path="/heroes"

@@ -4,26 +4,22 @@ import CharacterCard from "./../CharacterCard";
 import APIPoke from "./../../api/APIPoke";
 import transformPokemon from "./../../utils/objectTransform/transformPokemon";
 
-const Pokemons = ({ allPokemons, pokeURL }) => {
-  const pokeAPI = new APIPoke(pokeURL);
+const Pokemons = ({ allPokemons }) => {
+  const pokeAPI = new APIPoke(`${process.env.REACT_APP_BACKEND_URL}/pokemons`);
   const [pokemon, setPokemon] = useState(null);
 
   const displayPokemon = name => {
     pokeAPI
       .getPokemon(name)
       .then(apiRes => {
-        setPokemon(transformPokemon(apiRes.data));
+        setPokemon(apiRes.data);
       })
       .catch(apiErr => console.error(apiErr));
   };
 
   return allPokemons.length ? (
     <div className="listAndCardContainer">
-      <PokemonList
-        pokemons={allPokemons}
-        url={pokeURL}
-        displayPokemon={displayPokemon}
-      />
+      <PokemonList pokemons={allPokemons} displayPokemon={displayPokemon} />
       {pokemon ? (
         <CharacterCard character={pokemon} />
       ) : (

@@ -1,18 +1,17 @@
 import React from "react";
 import capitalize from "./../utils/math/capitalize";
+import Stats from "./CharacterComponents/Stats";
+import Moves from "./CharacterComponents/Moves";
 
 export default function CharacterCard({ character }) {
   return (
     <div className="card pokemonGB">
       {character ? (
         <>
+          {console.log(character)}
           <h3>{capitalize(character.name)}</h3>
           <div className="imageContainer">
-            <img
-              src={character.image}
-              alt="pokemon image"
-              className="image"
-            ></img>
+            <img src={character.image} alt="character" className="image"></img>
           </div>
           <div className="hp">
             HP: <span>{character.hp}</span>
@@ -31,22 +30,8 @@ export default function CharacterCard({ character }) {
               })}
             </div>
           </div>
-          <div className="stats">
-            {Object.entries(character.stats).map(([key, val], i) => {
-              return (
-                <span key={i}>
-                  {key} : {val.toString()}
-                </span>
-              );
-            })}
-          </div>
-          {character.moves && (
-            <div className="moves">
-              {character.moves.map((val, i) => {
-                return <span key={i}>{val + " "}</span>;
-              })}
-            </div>
-          )}
+          <Stats characterStats={character.stats} />
+          <Moves characterStats={character.stats} />
         </>
       ) : (
         <span>Loading...</span>

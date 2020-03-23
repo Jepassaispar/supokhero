@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import getRandomInt from "../../utils/math/getRandomInt";
 
-export default function PokemonList({ pokemons, displayPokemon }) {
-  
-  function randomPokemon() {
+const PokemonList = ({ pokemons, displayPokemon }) => {
+
+  const randomPokemon = () => {
     return displayPokemon(pokemons[getRandomInt(pokemons.length - 1)].name);
-  }
+  };
 
   return (
     <div className="listContainer">
@@ -27,4 +27,6 @@ export default function PokemonList({ pokemons, displayPokemon }) {
       </div>
     </div>
   );
-}
+};
+
+export default PokemonList;

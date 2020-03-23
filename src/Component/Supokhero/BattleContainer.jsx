@@ -1,11 +1,18 @@
 import React from "react";
 import BattleCard from "./BattleCard";
 
-const BattleContainer = ({hero, pokemon}) => {
+const BattleContainer = ({ hero, pokemon }) => {
   return (
     <div className="battleContainer">
-      <BattleCard character={pokemon}/>
-      <BattleCard character={hero}/>
+      {hero && pokemon ? (
+        <>
+          {console.log(pokemon)}
+          <BattleCard character={hero} card="top" />
+          <BattleCard character={pokemon} card="bottom" />
+        </>
+      ) : (
+        <h1>Choose your fighters !</h1>
+      )}
     </div>
   );
 };

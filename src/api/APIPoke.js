@@ -8,11 +8,11 @@ class APIPoke {
   }
 
   getAllPoke() {
-    return this.handler.get(`/pokemon?offset=0&limit=1000"`);
+    return this.handler.get(`/`);
   }
 
   getPokemon(name) {
-    return this.handler.get(`/pokemon/${name}`);
+    return this.handler.get(`/${name}`);
   }
 }
 
