@@ -1,14 +1,13 @@
 import React from "react";
-import capitalize from "./../utils/math/capitalize";
-import Stats from "./CharacterComponents/Stats";
-import Moves from "./CharacterComponents/Moves";
+import capitalize from "../../utils/math/capitalize";
+import Stats from "../StatsComponents/Stats";
+import Moves from "../StatsComponents/Moves";
 
 export default function CharacterCard({ character }) {
   return (
     <div className="card pokemonGB">
       {character ? (
         <>
-          {console.log(character)}
           <h3>{capitalize(character.name)}</h3>
           <div className="imageContainer">
             <img src={character.image} alt="character" className="image"></img>

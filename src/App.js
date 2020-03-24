@@ -1,39 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
+
+// Components
 import Home from "./Home";
 import NavBar from "./Component/Nav/NavBar";
-import Pokemons from "./Component/Pokemons/Pokemons";
-import Supokhero from "./Component/Supokhero";
-import Heroes from "./Component/Heroes/Heroes";
+import Characters from "./Component/CharacterComponents/Characters";
+import Supokhero from "./Component/Supokhero/Supokhero";
+
+// Functions
+import filterPokemons from "./utils/objectTransform/filterPokemons";
+import transformHero from "./utils/objectTransform/transformHero";
+import transformPokemon from "./utils/objectTransform/transformPokemon";
+
+// Styles
 import "./style/layout.scss";
 import "./style/listAndCardContainer.scss";
-import APIPoke from "./api/APIPoke";
-import APIHero from "./api/APIHero";
-import filterPokemons from "./utils/objectTransform/filterPokemons";
+
+// APIHandler
+import APICharacter from "./api/APICharacter";
 
 function App() {
-  const pokeURL = "http://pokeapi.co/api/v2";
-  const HeroAPI = new APIHero(`${process.env.REACT_APP_BACKEND_URL}/heroes`);
-  const pokeAPI = new APIPoke(`${process.env.REACT_APP_BACKEND_URL}/pokemons`);
+  const pokemon = "Pokemon";
+  const hero = "Hero";
+  const pokeAPI = new APICharacter(pokemon);
+  const heroAPI = new APICharacter(hero);
   const [pokemons, setPokemons] = useState([]);
   const [heroes, setHeroes] = useState([]);
 
-  const getHeroes = () => {
-    HeroAPI.getAllHeroes()
-      .then(apiRes => setHeroes(apiRes.data))
-      .catch(apiErr => console.error(apiErr));
-  };
-
-  const getPokemons = () => {
-    pokeAPI
-      .getAllPoke()
-      .then(apiRes => setPokemons(apiRes.data))
+  const getCharacters = (category, setCharacter, filterCharacter) => {
+    const characterAPI = new APICharacter(category);
+    characterAPI
+      .getAllCharacters()
+      .then(apiRes => {
+        filterCharacter
+          ? setCharacter(filterCharacter(apiRes.data))
+          : setCharacter(apiRes.data);
+      })
       .catch(apiErr => console.error(apiErr));
   };
 
   useEffect(() => {
-    getPokemons();
-    getHeroes();
+    getCharacters(pokemon, setPokemons, filterPokemons);
+    getCharacters(hero, setHeroes);
   }, []);
 
   return (
@@ -50,11 +58,25 @@ function App() {
         <Route
           exact
           path="/pokemons"
-          render={props => <Pokemons {...props} allPokemons={pokemons} />}
+          render={props => (
+            <Characters
+              {...props}
+              category={pokemon}
+              allCharacters={pokemons}
+              transformCharacter={transformPokemon}
+            />
+          )}
         ></Route>
         <Route
           path="/heroes"
-          render={props => <Heroes {...props} allHeroes={heroes} />}
+          render={props => (
+            <Characters
+              {...props}
+              category={hero}
+              allCharacters={heroes}
+              transformCharacter={transformHero}
+            />
+          )}
         ></Route>
       </Switch>
     </div>

@@ -6,7 +6,6 @@ const BattleContainer = ({ hero, pokemon }) => {
     <div className="battleContainer">
       {hero && pokemon ? (
         <>
-          {console.log(pokemon)}
           <BattleCard character={hero} card="top" />
           <BattleCard character={pokemon} card="bottom" />
         </>

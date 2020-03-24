@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Hp from "./../CharacterComponents/Hp";
-import Actions from "./../CharacterComponents/Actions";
-import Stats from "./../CharacterComponents/Stats";
+import Hp from "../StatsComponents/Hp";
+import Actions from "../StatsComponents/Actions";
+import Stats from "../StatsComponents/Stats";
 
 const BattleCard = ({ character, card }) => {
   const [hp, setHp] = useState(character.hp);

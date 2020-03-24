@@ -4,7 +4,6 @@ import updateStatsValue from "./updateStatsValue";
 
 const transformHero = hero => {
   const stats = updateStatsValue(hero.stats, 1.2);
-  console.log(stats);
   return {
     ...hero,
     moves: resizeArray(shuffleArray(hero.moves), 4),
