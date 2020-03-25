@@ -22,8 +22,6 @@ import APICharacter from "./api/APICharacter";
 function App() {
   const pokemon = "Pokemon";
   const hero = "Hero";
-  const pokeAPI = new APICharacter(pokemon);
-  const heroAPI = new APICharacter(hero);
   const [pokemons, setPokemons] = useState([]);
   const [heroes, setHeroes] = useState([]);
 
