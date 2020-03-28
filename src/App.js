@@ -20,8 +20,8 @@ import "./style/listAndCardContainer.scss";
 import APICharacter from "./api/APICharacter";
 
 function App() {
-  const pokemon = "Pokemon";
-  const hero = "Hero";
+  const catPokemon = "Pokemon";
+  const catHero = "Hero";
   const [pokemons, setPokemons] = useState([]);
   const [heroes, setHeroes] = useState([]);
 
@@ -38,8 +38,8 @@ function App() {
   };
 
   useEffect(() => {
-    getCharacters(pokemon, setPokemons, filterPokemons);
-    getCharacters(hero, setHeroes);
+    getCharacters(catPokemon, setPokemons, filterPokemons);
+    getCharacters(catHero, setHeroes);
   }, []);
 
   return (
@@ -59,9 +59,10 @@ function App() {
           render={props => (
             <Characters
               {...props}
-              category={pokemon}
+              category={catPokemon}
               allCharacters={pokemons}
               transformCharacter={transformPokemon}
+              direction={"reverse-x"}
             />
           )}
         ></Route>
@@ -70,9 +71,10 @@ function App() {
           render={props => (
             <Characters
               {...props}
-              category={hero}
+              category={catHero}
               allCharacters={heroes}
               transformCharacter={transformHero}
+              direction={"x"}
             />
           )}
         ></Route>

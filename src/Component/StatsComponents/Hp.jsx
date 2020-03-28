@@ -6,7 +6,7 @@ const hp = ({ totalHp, hp }) => {
       <div className="hp">{hp || "0"}</div>
       <input
         type="range"
-        value={hp || totalHp}
+        value={hp || "0"}
         max={totalHp || hp}
         className="hpBar"
       ></input>

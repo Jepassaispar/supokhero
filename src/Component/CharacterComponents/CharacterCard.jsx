@@ -6,6 +6,7 @@ import Moves from "../StatsComponents/Moves";
 export default function CharacterCard({ character }) {
   return (
     <div className="card pokemonGB">
+      {console.log(character)}
       {character ? (
         <>
           <h3>{capitalize(character.name)}</h3>

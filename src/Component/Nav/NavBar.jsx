@@ -24,7 +24,7 @@ export default function Navbar() {
     setTimeout(() => setRotation(""), 600);
   };
 
-  const translate = el => {
+  const translate = () => {
     !translationBar
       ? setTranslationBar("translationLeft")
       : setTranslationBar("");

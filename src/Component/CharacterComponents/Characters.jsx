@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CharactersList from "./CharactersList";
 import CharacterCard from "./CharacterCard";
-import APICharacter from "./../../api/APICharacter";
+import displayCharacter from "./../../utils/character/displayCharacter";
 
-const Characters = ({ category, allCharacters, transformCharacter }) => {
-  const characterAPI = new APICharacter(category);
+const Characters = ({
+  category,
+  allCharacters,
+  transformCharacter,
+  direction,
+  addFighter
+}) => {
   const [character, setCharacter] = useState(null);
 
-  const displayCharacter = name => {
-    characterAPI
-      .getOneCharacter(name)
-      .then(apiRes => {
-        setCharacter(transformCharacter(apiRes.data));
-      })
-      .catch(apiErr => console.error(apiErr));
-  };
+  useEffect(() => {
+    if(addFighter) addFighter(character);
+  }, [character]);
 
   return allCharacters.length ? (
-    <div className="listAndCardContainer">
+    <div className={`listAndCardContainer ${direction}`}>
       {character ? (
         <CharacterCard character={character} />
       ) : (
@@ -28,6 +28,8 @@ const Characters = ({ category, allCharacters, transformCharacter }) => {
       <CharactersList
         category={category}
         characters={allCharacters}
+        setCharacter={setCharacter}
+        transformCharacter={transformCharacter}
         displayCharacter={displayCharacter}
       />
     </div>

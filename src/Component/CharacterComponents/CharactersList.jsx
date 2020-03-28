@@ -1,9 +1,20 @@
 import React from "react";
 import getRandomInt from "../../utils/math/getRandomInt";
 
-const CharactersList = ({ category, characters, displayCharacter }) => {
+const CharactersList = ({
+  category,
+  characters,
+  setCharacter,
+  transformCharacter,
+  displayCharacter
+}) => {
   const randomCharacter = () => {
-    return displayCharacter(characters[getRandomInt(characters.length - 1)]);
+    return displayCharacter(
+      characters[getRandomInt(characters.length - 1)],
+      category,
+      setCharacter,
+      transformCharacter
+    );
   };
 
   return (
@@ -16,8 +27,16 @@ const CharactersList = ({ category, characters, displayCharacter }) => {
           return (
             <div
               key={i}
-              className={`${category}${i + 1} listItem pokemonFont pokemonFontSize`}
-              onClick={() => displayCharacter(character)}
+              className={`${category}${i +
+                1} listItem pokemonFont pokemonFontSize`}
+              onClick={() =>
+                displayCharacter(
+                  character,
+                  category,
+                  setCharacter,
+                  transformCharacter
+                )
+              }
             >
               {character}
             </div>

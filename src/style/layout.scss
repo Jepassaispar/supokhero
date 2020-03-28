@@ -84,6 +84,10 @@ body {
     display: flex;
 }
 
+.reverse-x {
+    flex-direction: row-reverse;
+}
+
 //GRID
 .grid {
     display: grid;
@@ -91,6 +95,7 @@ body {
 
 //BUTTON
 .button {
+    min-height: $mainNav;
     padding: 10px 40px;
     font-size: $medium;
 

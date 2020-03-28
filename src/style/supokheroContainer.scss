@@ -1,129 +1,140 @@
 @import "./layout.scss";
 
-.battleContainer {
-    height: inherit;
-    font-size: .8rem;
-    min-width: 76%;
+.supokhero {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: initial;
+    width: 100vw;
+    height: calc(100vh - #{$mainNav});
 
-    .bottom {
-        flex-direction: row;
-    }
-
-    .top {
-        flex-direction: row-reverse;
-    }
-
-    .battleCardContainer {
+    .listAndCardContainer {
+        max-width: 50%;
         display: flex;
-        align-items: center;
+        height: inherit;
+    }
+
+    .battleContainer {
+        height: inherit;
+        font-size: .8rem;
+        min-width: 76%;
+        display: flex;
+        flex-direction: column;
         justify-content: center;
-        width: 100%;
-        height: 50%;
+        align-items: center;
+        flex-wrap: initial;
 
-        .characterInfos {
+        .bottom {
+            flex-direction: row;
+        }
+
+        .top {
+            flex-direction: row-reverse;
+        }
+
+        .battleCardContainer {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            height: 100%;
-            width: 30%;
+            justify-content: center;
+            width: 100%;
+            height: 50%;
 
-            .hpContainer {
+            .characterInfos {
                 display: flex;
+                flex-direction: column;
+                justify-content: center;
                 align-items: center;
+                height: 100%;
+                width: 30%;
 
-                .hp {}
+                .hpContainer {
+                    display: flex;
+                    align-items: center;
 
-                /*Chrome*/
-                @media screen and (-webkit-min-device-pixel-ratio:0) {
-                    .hpBar {
-                        overflow: hidden;
-                        width: 200px;
-                        -webkit-appearance: none;
+                    .hp {}
+
+                    /*Chrome*/
+                    @media screen and (-webkit-min-device-pixel-ratio:0) {
+                        .hpBar {
+                            overflow: hidden;
+                            width: 200px;
+                            -webkit-appearance: none;
+                            background-color: white;
+                        }
+
+                        .hpBar::-webkit-slider-runnable-track {
+                            height: 10px;
+                            -webkit-appearance: none;
+                            color: $deepGreen;
+                            margin-top: -1px;
+                        }
+
+                        .hpBar::-webkit-slider-thumb {
+                            width: 0px;
+                            -webkit-appearance: none;
+                            height: 10px;
+                            background: white;
+                            box-shadow: -200px 0 0 200px $deepGreen;
+                        }
+
+                    }
+
+                    /** FF*/
+                    .hpBar::-moz-range-progress {
+                        background-color: $deepGreen;
+                    }
+
+                    .hpBar::-moz-range-track {
                         background-color: white;
                     }
 
-                    .hpBar::-webkit-slider-runnable-track {
-                        height: 10px;
-                        -webkit-appearance: none;
-                        color: $deepGreen;
-                        margin-top: -1px;
+                    /* IE*/
+                    .hpBar::-ms-fill-lower {
+                        background-color: $deepGreen;
                     }
 
-                    .hpBar::-webkit-slider-thumb {
-                        width: 10px;
-                        -webkit-appearance: none;
-                        height: 10px;
-                        cursor: ew-resize;
-                        background: #434343;
-                        box-shadow: -80px 0 0 80px $deepGreen;
+                    .hpBar::-ms-fill-upper {
+                        background-color: white;
                     }
 
+                    .hpBar {
+                        height: 6px;
+                        width: 200px;
+                        border: 1px solid black;
+                        background-color: white;
+                    }
+
+                    .totalHp {}
+
                 }
 
-                /** FF*/
-                .hpBar::-moz-range-progress {
-                    background-color: $deepGreen;
-                }
+                .imageContainer {
+                    height: 55%;
+                    // width: 10%;
 
-                .hpBar::-moz-range-track {
-                    background-color: white;
-                }
+                    .image {
+                        height: 100%;
+                        width: auto;
 
-                /* IE*/
-                .hpBar::-ms-fill-lower {
-                    background-color: $deepGreen;
-                }
-
-                .hpBar::-ms-fill-upper {
-                    background-color: white;
-                }
-
-                // .hpBar {
-                //     height: 5px;
-                //     width: 200px;
-                //     border: 1px solid black;
-                //     background-color: white;
-                // }
-
-                .totalHp {}
-
-            }
-
-            .imageContainer {
-                height: 55%;
-                // width: 10%;
-
-                .image {
-                    height: 100%;
-                    width: auto;
-
+                    }
                 }
             }
+
+            .stats,
+            .actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+                border: 3px solid;
+                border-style: double;
+                margin: 5px 0;
+                max-width: 500px;
+                width: 20%;
+                min-height: 100px;
+                min-width: 250px;
+            }
+
+
         }
-
-        .stats,
-        .actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            border: 3px solid;
-            border-style: double;
-            margin: 5px 0;
-            max-width: 500px;
-            width: 20%;
-            min-height: 100px;
-            min-width: 250px;
-        }
-
-
     }
 }

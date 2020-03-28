@@ -1,14 +1,17 @@
 Ideas for project name :
 Super SuPokHero Brawl Ultimate, infinite deluxe edition
 
-
 TODOS :
-*axios calls for single heroes
-*combat system
-*hp bar
+IL FAUT UPDATE LE HP EN PROPS
+\*Supokhero:
+//create an object for category: {category, transformCharacter, displayCharacter}
+//remove the const [pokemon, setPokemon] = useState(null);
+const [hero, setHero] = useState(null);
+replace them by setCharacter of Characters component
+//fix the setfighters issue by setting the fighters in the component Characters
+
 *styling + responsivness
 *card to add
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
