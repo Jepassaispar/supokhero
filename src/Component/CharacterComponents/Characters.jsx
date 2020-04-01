@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import CharactersList from "./CharactersList";
 import CharacterCard from "./CharacterCard";
 import displayCharacter from "./../../utils/character/displayCharacter";
@@ -8,18 +8,15 @@ const Characters = ({
   allCharacters,
   transformCharacter,
   direction,
-  addFighter
+  addFighter,
+  fighters
 }) => {
   const [character, setCharacter] = useState(null);
 
-  useEffect(() => {
-    if(addFighter) addFighter(character);
-  }, [character]);
-
   return allCharacters.length ? (
-    <div className={`listAndCardContainer ${direction}`}>
+    <div className={`listAndCardContainer ${direction}X`}>
       {character ? (
-        <CharacterCard character={character} />
+        <CharacterCard character={character} fighters={fighters} />
       ) : (
         <div className="card">
           <h1>Click on a {category}</h1>
@@ -31,6 +28,7 @@ const Characters = ({
         setCharacter={setCharacter}
         transformCharacter={transformCharacter}
         displayCharacter={displayCharacter}
+        addFighter={addFighter}
       />
     </div>
   ) : (

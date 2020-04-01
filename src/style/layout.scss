@@ -84,8 +84,12 @@ body {
     display: flex;
 }
 
-.reverse-x {
+.reverseX {
     flex-direction: row-reverse;
+}
+
+.reverseY {
+    flex-direction: column-reverse;
 }
 
 //GRID

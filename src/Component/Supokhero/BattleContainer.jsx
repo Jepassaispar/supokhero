@@ -1,11 +1,19 @@
-import React, { useEffect } from "react";
+import React from "react";
 import BattleCard from "./BattleCard";
 import attack from "../../utils/character/attack";
 
-const BattleContainer = ({ category1, category2, fighters, setFighters }) => {
+const BattleContainer = ({
+  category1,
+  category2,
+  fighters,
+  setFighters,
+  gameStatus
+}) => {
   const actions = {
     attack
   };
+
+  // const [fight, setFight] = useState("")
 
   return (
     <div className="battleContainer">
@@ -16,6 +24,7 @@ const BattleContainer = ({ category1, category2, fighters, setFighters }) => {
             category={category1}
             fighters={fighters}
             setFighters={setFighters}
+            gameStatus={gameStatus}
             card="top"
           />
           <BattleCard
@@ -23,6 +32,7 @@ const BattleContainer = ({ category1, category2, fighters, setFighters }) => {
             category={category2}
             fighters={fighters}
             setFighters={setFighters}
+            gameStatus={gameStatus}
             card="bottom"
           />
         </>

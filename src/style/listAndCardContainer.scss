@@ -3,7 +3,7 @@
 body {
     overflow: hidden;
 
-    
+
     .listAndCardContainer {
         height: calc(100vh - #{$mainNav});
         display: flex;
@@ -55,6 +55,28 @@ body {
 
                 .image {
                     height: 100%;
+                }
+            }
+
+            .teamDisplay {
+                display: flex;
+                max-height: 15px;
+                width: auto;
+
+                .star{
+                    color: yellow;
+                }
+
+                .imageContainer {
+                    max-height: 100%;
+                    max-width: 15px;
+                    display: flex;
+                    align-items: center;
+
+                    .image {
+                        height: 100%;
+                        margin-right: 3px;
+                    }
                 }
             }
 

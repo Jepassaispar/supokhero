@@ -2,11 +2,11 @@ import React from "react";
 import capitalize from "../../utils/math/capitalize";
 import Stats from "../StatsComponents/Stats";
 import Moves from "../StatsComponents/Moves";
+import TeamDisplay from "./../TeamComponents/TeamDisplay";
 
-export default function CharacterCard({ character }) {
+export default function CharacterCard({ character, fighters }) {
   return (
     <div className="card pokemonGB">
-      {console.log(character)}
       {character ? (
         <>
           <h3>{capitalize(character.name)}</h3>
@@ -32,6 +32,7 @@ export default function CharacterCard({ character }) {
           </div>
           <Stats characterStats={character.stats} />
           <Moves characterStats={character.stats} />
+          {fighters && <TeamDisplay team={fighters[character.category]} />}
         </>
       ) : (
         <span>Loading...</span>

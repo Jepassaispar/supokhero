@@ -5,6 +5,8 @@ const hp = ({ totalHp, hp }) => {
     <div className="hpContainer">
       <div className="hp">{hp || "0"}</div>
       <input
+        onChange={() => hp}
+        //this onChange event is only here to avoid ugly React Warnings
         type="range"
         value={hp || "0"}
         max={totalHp || hp}
