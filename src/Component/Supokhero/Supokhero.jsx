@@ -9,6 +9,7 @@ import "./../../style/supokheroContainer.scss";
 const Supokhero = ({ allPokemons, allHeroes }) => {
   const catPokemon = "Pokemon";
   const catHero = "Hero";
+  const [gameStatus, setGameStatus] = useState("");
   const [fighters, setFighters] = useState({
     [catPokemon]: [],
     [catHero]: []
@@ -22,15 +23,15 @@ const Supokhero = ({ allPokemons, allHeroes }) => {
     return true;
   };
 
-  const win = () => {
-    console.log("Win team 1")
-  }
-
-  const checkFightersHealth = fighters => {
-    
-  }
+  const checkTeamsStatus = fighters => {
+    let categories = Object.keys(fighters);
+    categories.map(cat =>
+      fighters[cat][0].hp <= 0 ? setGameStatus("end") : ""
+    );
+  };
 
   const addFighter = character => {
+    // console.log(character);
     if (
       character &&
       fighters[character.category].length < 4 &&
@@ -46,33 +47,37 @@ const Supokhero = ({ allPokemons, allHeroes }) => {
   };
 
   useEffect(() => {
-    checkTeamsLength(fighters);
+    if (checkTeamsLength(fighters)) checkTeamsStatus(fighters);
   }, [fighters]);
 
   return (
     <div className="supokhero">
-      {checkTeamsLength(fighters) ? (
+      {checkTeamsLength(fighters) && (
         <BattleContainer
           category1={catHero}
           category2={catPokemon}
           fighters={fighters}
           setFighters={setFighters}
+          gameStatus={gameStatus}
         />
-      ) : (
+      )}{" "}
+      {!checkTeamsLength(fighters) && (
         <>
           <Characters
             category={catPokemon}
             allCharacters={allPokemons}
             transformCharacter={transformPokemon}
-            direction={"reverse-x"}
+            direction={"reverse"}
             addFighter={addFighter}
+            fighters={fighters}
           />
           <Characters
             category={catHero}
             allCharacters={allHeroes}
             transformCharacter={transformHero}
-            direction={"x"}
+            direction={""}
             addFighter={addFighter}
+            fighters={fighters}
           />
         </>
       )}

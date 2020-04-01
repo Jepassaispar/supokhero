@@ -6,14 +6,16 @@ const CharactersList = ({
   characters,
   setCharacter,
   transformCharacter,
-  displayCharacter
+  displayCharacter,
+  addFighter
 }) => {
   const randomCharacter = () => {
     return displayCharacter(
       characters[getRandomInt(characters.length - 1)],
       category,
+      transformCharacter,
       setCharacter,
-      transformCharacter
+      addFighter
     );
   };
 
@@ -29,12 +31,23 @@ const CharactersList = ({
               key={i}
               className={`${category}${i +
                 1} listItem pokemonFont pokemonFontSize`}
-              onClick={() =>
+              onMouseEnter={() =>
                 displayCharacter(
                   character,
                   category,
-                  setCharacter,
-                  transformCharacter
+                  transformCharacter,
+                  setCharacter
+                )
+              }
+              onClick={() =>
+                addFighter(
+                  displayCharacter(
+                    character,
+                    category,
+                    transformCharacter,
+                    setCharacter,
+                    addFighter
+                  )
                 )
               }
             >

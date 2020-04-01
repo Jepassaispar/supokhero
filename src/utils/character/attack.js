@@ -7,10 +7,10 @@ const attack = (fighters, category, setFighters) => {
   let categories = Object.keys(fighters);
   categories.map(cat => {
     if (cat === category) {
-      attacker = fighters[cat][0];
+      return (attacker = fighters[cat][0]);
     } else {
       victimCategory = cat;
-      victim = fighters[cat][0];
+      return (victim = fighters[cat][0]);
     }
   });
   const hpLoss = () => {
