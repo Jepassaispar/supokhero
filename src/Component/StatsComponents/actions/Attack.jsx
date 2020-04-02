@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Moves = ({characterMoves}) => {
+const Attack = ({characterMoves}) => {
     return (
         <>
         {characterMoves && (
@@ -14,4 +14,4 @@ const Moves = ({characterMoves}) => {
     )
 }
 
-export default Moves
+export default Attack;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Hp from "../StatsComponents/Hp";
-import Actions from "../StatsComponents/Actions";
+import Actions from "../StatsComponents/actions/Actions";
 import Stats from "../StatsComponents/Stats";
 import TeamDisplay from "./../TeamComponents/TeamDisplay";
 
@@ -12,15 +12,10 @@ const BattleCard = ({
   gameStatus,
   card
 }) => {
-  let character = fighters[category][0];
-  const [totalHp, setTotalHp] = useState({
-    [fighters[category][0].name]: character.hp
-  });
 
-  useEffect(() => {
-    if (!totalHp[fighters[category][0].name])
-      setTotalHp({ [fighters[category][0].name]: character.hp });
-  }, [fighters]);
+  let character = fighters[category][0];
+
+  
 
   const checkTeamWinStatus = team => {
     for (let i = 0; i < team.length; i++) {
@@ -36,10 +31,10 @@ const BattleCard = ({
         <>
           <div className="characterInfos">
             <h1>{character.name}</h1>
-            <Hp totalHp={totalHp[character.name]} hp={character.hp} />
+            <Hp character={character} hp={character.hp} />
             <div className="imageContainer">
               <img
-                src={card === "top" ? character.image : character.image_back}
+                src={card === "bottom" && character.image_back ? character.image_back : character.image}
                 className="image"
                 alt="character"
               ></img>

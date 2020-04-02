@@ -1,7 +1,7 @@
 import React from "react";
 import capitalize from "../../utils/math/capitalize";
 import Stats from "../StatsComponents/Stats";
-import Moves from "../StatsComponents/Moves";
+import Attack from "../StatsComponents/actions/Attack";
 import TeamDisplay from "./../TeamComponents/TeamDisplay";
 
 export default function CharacterCard({ character, fighters }) {
@@ -31,7 +31,7 @@ export default function CharacterCard({ character, fighters }) {
             </div>
           </div>
           <Stats characterStats={character.stats} />
-          <Moves characterStats={character.stats} />
+          <Attack characterStats={character.stats} />
           {fighters && <TeamDisplay team={fighters[character.category]} />}
         </>
       ) : (

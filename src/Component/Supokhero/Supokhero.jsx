@@ -31,7 +31,6 @@ const Supokhero = ({ allPokemons, allHeroes }) => {
   };
 
   const addFighter = character => {
-    // console.log(character);
     if (
       character &&
       fighters[character.category].length < 4 &&

@@ -2,16 +2,16 @@ Ideas for project name :
 Super SuPokHero Brawl Ultimate, infinite deluxe edition
 
 TODOS :
-IL FAUT UPDATE LE HP EN PROPS
 \*Supokhero:
 //create an object for category: {category, transformCharacter, displayCharacter}
-//remove the const [pokemon, setPokemon] = useState(null);
-const [hero, setHero] = useState(null);
-replace them by setCharacter of Characters component
-//fix the setfighters issue by setting the fighters in the component Characters
+
 
 *styling + responsivness
 *card to add
+
+\* FIGHT :
+if fighter.speed < opponent.speed/2 opponent should get a chance of double attack
+moves should get 3 lvl of attack strength attached randomly, OPTION could be to attach higher level to words like "god", OPTION 2 could be to have an attack type to words like "fire".
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
